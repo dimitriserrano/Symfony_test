@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+<div class="jumbotron text-center">
+  <h1>Paniers</h1>
+</div>
+
+
+
+{% if items | length > 0 %}
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Produits</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in items %}
+                <tr>
+                    <td>{{ item.product.name }}</td>
+                    <td><a href="{{ path('panierremove', {id: item.product.id}) }}" class="btn btn-danger">Supp</a></td>
+                </tr>
+            {% endfor %}
+{% else %}
+<p>le panier est vide commence vite tes achats !</p>
+{% endif %}
+
+
+{% endblock %}

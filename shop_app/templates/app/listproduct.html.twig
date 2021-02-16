@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+<div class="jumbotron text-center">
+    <h1>Tous les produits</h1>
+    {{ form_start(form) }}
+    <div class="form-row align-items-end">
+        <div class="col">
+            {{ form_row(form.name) }}
+        </div>
+
+        <div class="col">
+            <div class="form-group">
+                <button type="submit" class="btn btn-success">Rechercher</button>
+            </div>
+        </div>
+    </div>
+    {{ form_end(form) }}
+</div>
+
+
+<div class="row justify-content-start mr-5 ml-5">
+    {% for product in products %}
+            <div class="col-sm-4">
+                <div class="card border-primary mb-3" style="max-width: 40rem;">
+                    <div class="card-body">
+                        <h4 class="card-title"><a href="{{ path('showproduct', {'id': product.id}) }}" class="btn btn-primary">{{ product.name }}</a>
+                            {% if product.promo == 1 %}
+                                <span style="margin-left: 3vw;" class="badge badge-secondary">-50%</span>
+                            {% endif %}
+                        </h4>
+                        <img class="fit-picture" src={{ product.picture }} style="width: 100%;">
+                        <p class="card-text"> {{ product.description }} </p>
+                    </div>
+                </div>
+            </div>
+    {% endfor %}
+</div>
+
+{% endblock %}

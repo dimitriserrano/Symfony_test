@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+<div class="jumbotron text-center">
+  <h1>Tous les produits</h1>
+</div>
+
+
+<div class="row justify-content-start mr-5 ml-5">
+    {% for product in products %}
+        <div class="col-sm-4">
+            <div class="card border-primary mb-3" style="max-width: 40rem;">
+                <div class="card-body">
+                    <h4 class="card-title"><a href="{{ path('showproduct', {'id': product.id}) }}" class="btn btn-primary">{{ product.name }}</a></h4>
+                    <img class="fit-picture" src={{ product.picture }} style="max-width: 100%;">
+                    <p class="card-text"> {{ product.description }} </p>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+
+{% endblock %}

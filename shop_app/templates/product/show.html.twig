@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+<div class="jumbotron">
+  <h1 class="display-3">{{products.name}}</h1>
+  <hr class="my-4">
+  <img class="fit-picture" src={{ products.picture }} style="max-width: 100%;">
+  <p>{{products.description}}
+  {% if products.promo == 1 %}
+        <span style="margin-left: 3vw;" class="badge badge-secondary">-50%</span>
+    {% endif %}
+  </p>
+  <p class="lead">
+    <a class="btn btn-primary btn-lg" href="{{ path('panieradd', {'id': products.id}) }}" role="button">Panier</a>
+  </p>
+</div>
+
+{% endblock %}
